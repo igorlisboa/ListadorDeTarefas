@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {RegistrarPage} from "../registrar/registrar";
+import {LoginProvider} from "../../providers/login/login";
+import {Credencial} from "../../models/credencial";
+import * as _ from "lodash";
 
 /**
  * Generated class for the LoginPage page.
@@ -15,11 +19,33 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  credencial : Credencial = _.defaults();
+
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public loginProvider : LoginProvider) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    this.loginProvider.loginSucessoEventEmiter
+      .subscribe(user => console.log(user))
+    this.loginProvider.loginFalhaEventEmiter
+      .subscribe(error => console.log(error))
   }
 
+  registrarSe(){
+    this.navCtrl.push(RegistrarPage);
+  }
+
+  loginComCredencial(){
+    this.loginProvider.loginComCredencial(this.credencial)
+  }
+
+  loginComGoogle(){
+    this.loginProvider.loginComGoogle();
+  }
+
+  sair(){
+    this.loginProvider.sair()
+  }
 }

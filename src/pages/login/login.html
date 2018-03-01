@@ -1,6 +1,6 @@
-<ion-content padding color="dark">
+<ion-content padding class="backgroundLogin">
 
-<ion-card>
+<ion-card >
   <ion-card-header>
     Login
   </ion-card-header>
@@ -12,7 +12,9 @@
             <ion-label floating>
               E-mail:
             </ion-label>
-            <ion-input type="email"></ion-input>
+            <ion-input name="email"
+                       [(ngModel)]="credencial.email"
+            ></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -22,14 +24,17 @@
             <ion-label floating>
               Senha:
             </ion-label>
-            <ion-input type="password"></ion-input>
+            <ion-input type="password"
+                       name="senha"
+                       [(ngModel)]="credencial.senha"
+            ></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-row>
 
         <ion-col>
-          <button ion-button full color="primary">
+          <button ion-button full color="primary" (click)="loginComCredencial()">
             Login
           </button>
         </ion-col>
@@ -42,13 +47,13 @@
           </button>
         </ion-col>
         <ion-col width-50>
-          <button ion-button full class="btnLogin">
+          <button ion-button full class="btnLogin" (click)="loginComGoogle()">
             Logar com Google
           </button>
         </ion-col>
       </ion-row>
       <ion-row>
-        <a href="#">Registrar-se</a>
+        <a (click)="registrarSe()">Registrar-se</a>
       </ion-row>
     </ion-grid>
   </ion-card-content>
