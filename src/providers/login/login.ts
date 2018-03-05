@@ -57,6 +57,14 @@ export class LoginProvider {
       .catch(error => this.callbackFalhaLogin(error));
   }
 
+  loginComFacebook(){
+    let provider =  new firebase.auth.FacebookAuthProvider();
+
+    return firebase.auth().signInWithPopup(provider)
+      .then(response => this.callbackSucessoLogin(response))
+      .catch(error => this.callbackFalhaLogin(error));
+  }
+
   loginComGoogle(){
     let provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider)

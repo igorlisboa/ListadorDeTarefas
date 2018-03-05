@@ -11,6 +11,10 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { LoginProvider } from '../providers/login/login';
 import {RegistrarPage} from "../pages/registrar/registrar";
+import { TarefaProvider } from '../providers/tarefa/tarefa';
+import {TarefaListItemComponent} from "../components/tarefa-list-item/tarefa-list-item";
+import {TarefasAddPage} from "../pages/tarefas-add/tarefas-add";
+import {TarefasListPage} from "../pages/tarefas-list/tarefas-list";
 
 const FirebaseConfig = {
   apiKey: "AIzaSyCtH2NDegOKKnbu7P5F_E2fBm0oK9pdffM",
@@ -26,7 +30,10 @@ const FirebaseConfig = {
     MyApp,
     HomePage,
     LoginPage,
-    RegistrarPage
+    RegistrarPage,
+    TarefaListItemComponent,
+    TarefasAddPage,
+    TarefasListPage
   ],
   imports: [
     BrowserModule,
@@ -38,13 +45,17 @@ const FirebaseConfig = {
     MyApp,
     HomePage,
     LoginPage,
-    RegistrarPage
+    RegistrarPage,
+    TarefaListItemComponent,
+    TarefasAddPage,
+    TarefasListPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    LoginProvider
+    LoginProvider,
+    TarefaProvider
   ]
 })
 export class AppModule {

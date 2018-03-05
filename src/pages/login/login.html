@@ -6,55 +6,62 @@
   </ion-card-header>
   <ion-card-content>
     <ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-label floating>
-              E-mail:
-            </ion-label>
-            <ion-input name="email"
-                       [(ngModel)]="credencial.email"
-            ></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item>
-            <ion-label floating>
-              Senha:
-            </ion-label>
-            <ion-input type="password"
-                       name="senha"
-                       [(ngModel)]="credencial.senha"
-            ></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
+      <form [formGroup]="loginForm" (ngSubmit)="loginComCredencial()">
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label floating>
+                E-mail:
+              </ion-label>
+              <ion-input type="email"
+                         formControlName="email"
+                         name="email"
+                         [class.invalid]="(!loginForm.controls.email.valid) && loginForm.controls.email.dirty"
+                         [(ngModel)]="credencial.email"
+              ></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label floating>
+                Senha:
+              </ion-label>
+              <ion-input type="password"
+                         formControlName="senha"
+                         name="senha"
+                         [class.invalid]="(!loginForm.controls.senha.valid) && loginForm.controls.senha.dirty"
+                         [(ngModel)]="credencial.senha"
+              ></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        <ion-row>
 
-        <ion-col>
-          <button ion-button full color="primary" (click)="loginComCredencial()">
-            Login
-          </button>
-        </ion-col>
+          <ion-col>
+            <button type="submit" ion-button full color="primary">
+              Login
+            </button>
+          </ion-col>
 
-      </ion-row>
-      <ion-row>
-        <ion-col width-50>
-          <button ion-button full class="btnLogin">
-            Logar com Facebook
-          </button>
-        </ion-col>
-        <ion-col width-50>
-          <button ion-button full class="btnLogin" (click)="loginComGoogle()">
-            Logar com Google
-          </button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <a (click)="registrarSe()">Registrar-se</a>
-      </ion-row>
+        </ion-row>
+        <ion-row>
+          <ion-col width-50>
+            <button ion-button full class="btnLogin" (click)="loginComFacebook()">
+              Logar com Facebook
+            </button>
+          </ion-col>
+          <ion-col width-50>
+            <button ion-button full class="btnLogin" (click)="loginComGoogle()">
+              Logar com Google
+            </button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <a (click)="registrarSe()">Registrar-se</a>
+        </ion-row>
+      </form>
     </ion-grid>
   </ion-card-content>
 </ion-card>
