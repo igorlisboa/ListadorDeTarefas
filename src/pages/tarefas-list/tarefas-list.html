@@ -5,10 +5,10 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-  <button menuToggle=" ">
-    <ion-icon name="menu"></ion-icon>
-  </button>
   <ion-navbar color="primary">
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Minhas Tarefas</ion-title>
   </ion-navbar>
 
@@ -17,16 +17,29 @@
 
 <ion-content padding>
 
-  <ion-list [virtualScroll]="tarefas">
-    <button ion-item *virtualItem="let tarefa">
-      <tarefa-list-item [tarefas]="tarefa"></tarefa-list-item>
-    </button>
+  <ion-list [virtualScroll]="tarefasList">
+    <ion-item-sliding *virtualItem="let tarefa">
+      <button ion-item (click)="atualizaTarefa(tarefa)">
+        <tarefa-list-item [tarefas]="tarefa"></tarefa-list-item>
+      </button>
+      <ion-item-options>
+        <button ion-button icon-only (click)="deletar(tarefa)" color="danger">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+      <ion-item-options side="left">
+        <button ion-button icon-only (click)="atualizarStatus()" color="secondary">
+          <ion-icon name="checkmark"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
   </ion-list>
 
 </ion-content>
 
 <ion-fab bottom right>
-  <button ion-fab color="primary">
+  <button ion-fab color="primary" (click)="adicionarTarefa()">
     <ion-icon name="add"></ion-icon>
   </button>
 </ion-fab>

@@ -1,0 +1,19 @@
+{
+  "global" : {
+    "buttons" : {
+      "login" : "Sign in",
+      "login-facebook" : "Sign in with facebook",
+      "login-google" : "Sign in with google",
+      "register" : "Register"
+    },
+    "inputs" : {
+      "email" : "E-mail",
+      "password" : "Password"
+    }
+  },
+  "pages" : {
+    "login" : {
+      "title" : "Login"
+    }
+  }
+}

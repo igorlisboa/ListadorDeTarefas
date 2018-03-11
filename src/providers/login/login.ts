@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {EventEmitter, Injectable, NgZone} from '@angular/core';
-import {Usuario} from "../../models/usuario";
 import {Credencial} from "../../models/credencial";
 import * as firebase from 'firebase';
 

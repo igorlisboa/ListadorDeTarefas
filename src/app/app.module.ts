@@ -15,6 +15,9 @@ import { TarefaProvider } from '../providers/tarefa/tarefa';
 import {TarefaListItemComponent} from "../components/tarefa-list-item/tarefa-list-item";
 import {TarefasAddPage} from "../pages/tarefas-add/tarefas-add";
 import {TarefasListPage} from "../pages/tarefas-list/tarefas-list";
+import { LovProvider } from '../providers/lov/lov';
+import {TranslateLoader, TranslateModule, TranslateStaticLoader} from "ng2-translate";
+import {Http} from "@angular/http";
 
 const FirebaseConfig = {
   apiKey: "AIzaSyCtH2NDegOKKnbu7P5F_E2fBm0oK9pdffM",
@@ -24,6 +27,10 @@ const FirebaseConfig = {
   storageBucket: "listadordetarefas-a7095.appspot.com",
   messagingSenderId: "973001995830"
 };
+
+export function createTranslateLoader(http:Http){
+  return new TranslateStaticLoader(http, '../assets/i18n', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -38,7 +45,12 @@ const FirebaseConfig = {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    TranslateModule.forRoot({
+      provide: TranslateLoader,
+      useFActory : (createTranslateLoader),
+      deps: [Http]
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -55,7 +67,8 @@ const FirebaseConfig = {
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LoginProvider,
-    TarefaProvider
+    TarefaProvider,
+    LovProvider
   ]
 })
 export class AppModule {

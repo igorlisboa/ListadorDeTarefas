@@ -6,13 +6,63 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>TarefasAdd</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>{{tarefa.titulo || 'Nova Tarefa'}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+  <form>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>
+              Titulo
+            </ion-label>
+            <ion-input [(ngModel)]="tarefa.titulo"
+                       required
+                       name="titulo">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>
+              Descrição
+            </ion-label>
+            <ion-input [(ngModel)]="tarefa.descricao"
+                       required
+                       name="descricao">
+            </ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>
+              Status
+            </ion-label>
+            <ion-select [(ngModel)]="tarefa.estado" name="state" required>
+              <ion-option *ngFor="let state of lovProvider.getTarefaState()" value="state">{{state}}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button ion-button full color="secondary" (click)="salvarTarefa()">
+            Salvar tarefa
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 
 </ion-content>
