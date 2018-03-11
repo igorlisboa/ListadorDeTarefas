@@ -6,7 +6,6 @@
   </ion-card-header>
   <ion-card-content>
     <ion-grid>
-      <form [formGroup]="loginForm" (ngSubmit)="loginComCredencial()">
         <ion-row>
           <ion-col>
             <ion-item>
@@ -14,9 +13,7 @@
                 E-mail:
               </ion-label>
               <ion-input type="email"
-                         formControlName="email"
                          name="email"
-                         [class.invalid]="(!loginForm.controls.email.valid) && loginForm.controls.email.dirty"
                          [(ngModel)]="credencial.email"
               ></ion-input>
             </ion-item>
@@ -29,9 +26,7 @@
                 Senha:
               </ion-label>
               <ion-input type="password"
-                         formControlName="senha"
                          name="senha"
-                         [class.invalid]="(!loginForm.controls.senha.valid) && loginForm.controls.senha.dirty"
                          [(ngModel)]="credencial.senha"
               ></ion-input>
             </ion-item>
@@ -40,7 +35,7 @@
         <ion-row>
 
           <ion-col>
-            <button type="submit" ion-button full color="primary">
+            <button (click)="loginComCredencial()" type="submit" ion-button full color="primary">
               Login
             </button>
           </ion-col>
@@ -61,7 +56,6 @@
         <ion-row>
           <a (click)="registrarSe()">Registrar-se</a>
         </ion-row>
-      </form>
     </ion-grid>
   </ion-card-content>
 </ion-card>
